@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "fabao:dayao_dan",
+    "fabao:dayao_dan",
+    "fabao:dayao_dan",
+    "fabao:dayao_dan",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:jiangyao_chu"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "I": "minecraft:iron_ingot",
+    "D": "minecraft:diamond",
+    "L": "fabao:lingshi"
+  },
+  "pattern": [
+    "GIG",
+    "IDI",
+    "GLG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:qiankun_quan"
+  },
+  "show_notification": true
+}

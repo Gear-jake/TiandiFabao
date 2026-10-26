@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:netherite_ingot",
+    "minecraft:netherite_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:diamond",
+    "fabao:lingshi",
+    "fabao:lingshi"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:jingang_zhuo"
+  }
+}

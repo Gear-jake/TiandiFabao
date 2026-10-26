@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "amount": 3,
+  "operation": "set",
+  "order": 100,
+  "icon": "fabao:slot/fabao",
+  "validators": [
+    "fabao:fabao_only"
+  ]
+}

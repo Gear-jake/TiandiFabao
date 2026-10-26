@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "fabao:xiaoyao_dan",
+    "fabao:xiaoyao_dan",
+    "fabao:xiaoyao_dan",
+    "fabao:xiaoyao_dan",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:iron_ingot",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:zhanyao_dao"
+  }
+}

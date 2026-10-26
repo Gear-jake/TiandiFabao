@@ -1,0 +1,29 @@
+# Gradle / Java
+.gradle/
+build/
+out/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Minecraft 开发运行目录
+run/
+runs/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# 本地工具与设计文档（不入库，仅源码与图片）
+_tools/
+DESIGN.md
+README-材质替换.md
+_shots/
+
+# 系统
+.DS_Store
+Thumbs.db

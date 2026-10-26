@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "fabao",
+  "version": "${version}",
+  "name": "天地法宝",
+  "description": "封神演义与西游记主题的法宝模组：饰品槽法器 + 手持兵器、九转祭炼、妖丹与诸妖。仅支持 Minecraft 1.21.10 / Fabric。",
+  "authors": [
+    "Gear-jake"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fabao/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.fabao.FabaoMod"
+    ],
+    "client": [
+      "com.fabao.FabaoClient"
+    ],
+    "jade": [
+      "com.fabao.compat.FabaoJadePlugin"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": ">=0.138.0",
+    "accessories": ">=1.4.0-beta",
+    "minecraft": "1.21.10",
+    "java": ">=21"
+  },
+  "suggests": {
+    "jade": "*"
+  }
+}

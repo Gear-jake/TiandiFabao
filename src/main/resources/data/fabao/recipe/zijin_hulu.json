@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:ghast_tear",
+    "minecraft:ghast_tear",
+    "minecraft:gold_ingot",
+    "fabao:lingshi",
+    "fabao:lingshi"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:zijin_hulu"
+  }
+}

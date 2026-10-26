@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:red_wool",
+    "minecraft:red_wool",
+    "fabao:lingshi",
+    "fabao:lingshi"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:huntian_ling"
+  }
+}

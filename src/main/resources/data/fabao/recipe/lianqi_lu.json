@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "I": "minecraft:iron_ingot",
+    "F": "minecraft:furnace"
+  },
+  "pattern": [
+    "GIG",
+    "IFI",
+    "GIG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:lianqi_lu"
+  },
+  "show_notification": true
+}

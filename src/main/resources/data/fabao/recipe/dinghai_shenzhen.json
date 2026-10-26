@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "fabao:yaowang_dan",
+    "fabao:yaowang_dan",
+    "minecraft:nether_star",
+    "minecraft:diamond_block",
+    "minecraft:diamond_block",
+    "minecraft:prismarine_shard",
+    "minecraft:prismarine_shard",
+    "minecraft:prismarine_shard",
+    "minecraft:prismarine_shard"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fabao:dinghai_shenzhen"
+  }
+}
