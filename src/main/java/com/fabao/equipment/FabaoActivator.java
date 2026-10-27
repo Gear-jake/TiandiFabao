@@ -304,8 +304,10 @@ public final class FabaoActivator {
 	public static List<LivingEntity> hostilesAround(ServerPlayerEntity player, ServerWorld world, double radius) {
 		Box box = player.getBoundingBox().expand(radius, 4.0, radius);
 		List<LivingEntity> out = new ArrayList<>();
+		// 对所有生物生效（怪物 / 动物 / 自定义妖精），只排除玩家自己与其他玩家
 		for (Entity entity : world.getOtherEntities(player, box,
-				e -> e instanceof LivingEntity living && living.isAlive() && living instanceof Monster)) {
+				e -> e instanceof LivingEntity living && living.isAlive()
+						&& !(living instanceof net.minecraft.entity.player.PlayerEntity))) {
 			out.add((LivingEntity) entity);
 		}
 		return out;

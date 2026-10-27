@@ -25,6 +25,16 @@ import org.lwjgl.glfw.GLFW;
 
 import java.util.List;
 
+import com.fabao.client.model.BearDemonModel;
+import com.fabao.client.model.FoxDemonModel;
+import com.fabao.client.model.SpiderDemonModel;
+import com.fabao.client.renderer.BearDemonRenderer;
+import com.fabao.client.renderer.FoxDemonRenderer;
+import com.fabao.client.renderer.SpiderDemonRenderer;
+import com.fabao.registry.ModEntities;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+
 /**
  * 客户端入口：
  * - 唯一按键「法宝·蓄力释放」（默认 R，可在 选项→控制→封神西游法宝 里自由修改）：
@@ -44,6 +54,7 @@ public class FabaoClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		FabaoParticles.init();
 		HandledScreens.register(ModScreenHandlers.LIANQI_LU, LianqiLuScreen::new);
+		initEntityRenderers();
 
 		KeyBinding.Category category = KeyBinding.Category.create(FabaoMod.id("fabao"));
 		triggerKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -121,5 +132,16 @@ public class FabaoClient implements ClientModInitializer {
 	/** Esc 取消轮盘：清掉服务端蓄力记录。 */
 	public static void cancelCharge() {
 		ClientPlayNetworking.send(new FabaoKeyPayload(FabaoKeyPayload.Action.CANCEL));
+	}
+
+	/** 注册三种自定义妖物的模型图层与渲染器。 */
+	private static void initEntityRenderers() {
+		EntityModelLayerRegistry.registerModelLayer(FoxDemonModel.LAYER, FoxDemonModel::getTexturedModelData);
+		EntityModelLayerRegistry.registerModelLayer(SpiderDemonModel.LAYER, SpiderDemonModel::getTexturedModelData);
+		EntityModelLayerRegistry.registerModelLayer(BearDemonModel.LAYER, BearDemonModel::getTexturedModelData);
+
+		EntityRendererRegistry.register(ModEntities.FOX_DEMON, FoxDemonRenderer::new);
+		EntityRendererRegistry.register(ModEntities.SPIDER_DEMON, SpiderDemonRenderer::new);
+		EntityRendererRegistry.register(ModEntities.BEAR_DEMON, BearDemonRenderer::new);
 	}
 }

@@ -27,7 +27,12 @@ public class YaoDanItem extends Item {
 	@Override
 	public ActionResult use(World world, PlayerEntity user, Hand hand) {
 		if (!world.isClient() && user instanceof ServerPlayerEntity player) {
-			YaoManager.summon(player, tier);
+			// 潜行右键 = 按顺序循环召（狐妖→蜘蛛精→黑熊精），普通右键 = 随机
+			if (player.isSneaking()) {
+				YaoManager.summonCycle(player, tier);
+			} else {
+				YaoManager.summon(player, tier);
+			}
 			user.getStackInHand(hand).decrement(1);
 		}
 		return ActionResult.SUCCESS;

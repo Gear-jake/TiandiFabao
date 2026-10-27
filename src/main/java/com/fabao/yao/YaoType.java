@@ -1,5 +1,6 @@
 package com.fabao.yao;
 
+import com.fabao.registry.ModEntities;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -11,9 +12,9 @@ import net.minecraft.entity.LivingEntity;
  * 特殊机制见 {@link YaoManager}：按实体 age 周期触发，还原原著桥段。
  */
 public enum YaoType {
-	FOX_YAO("fox_yao", EntityType.WITCH, 1, 16.0f, 2.0f, YaoManager::mechCharm),
-	ZHIZHU_JING("zhizhu_jing", EntityType.CAVE_SPIDER, 1, 12.0f, 3.0f, YaoManager::mechWeave),
-	HEIXIONG_JING("heixiong_jing", EntityType.POLAR_BEAR, 1, 20.0f, 4.0f, YaoManager::mechCharge),
+	FOX_YAO("fox_yao", ModEntities.FOX_DEMON, 1, 16.0f, 2.0f, YaoManager::mechCharm),
+	ZHIZHU_JING("zhizhu_jing", ModEntities.SPIDER_DEMON, 1, 12.0f, 3.0f, YaoManager::mechWeave),
+	HEIXIONG_JING("heixiong_jing", ModEntities.BEAR_DEMON, 1, 20.0f, 4.0f, YaoManager::mechCharge),
 
 	BAIGU_JING("baigu_jing", EntityType.SKELETON, 2, 60.0f, 7.0f, YaoManager::mechDrain),
 	JINJIAO_DAWANG("jinjiao_dawang", EntityType.EVOKER, 2, 50.0f, 6.0f, YaoManager::mechGourd),

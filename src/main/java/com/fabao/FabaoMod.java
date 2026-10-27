@@ -11,6 +11,7 @@ import com.fabao.registry.ModAttachments;
 import com.fabao.registry.ModBlockEntities;
 import com.fabao.registry.ModBlocks;
 import com.fabao.registry.ModComponents;
+import com.fabao.registry.ModEntities;
 import com.fabao.registry.ModItemGroups;
 import com.fabao.registry.ModItems;
 import com.fabao.registry.ModParticles;
@@ -38,6 +39,7 @@ public class FabaoMod implements ModInitializer {
 		ModComponents.init();
 		ModPackets.init();
 		ModItems.register();
+		ModEntities.init();
 		ModBlocks.register();
 		ModBlockEntities.init();
 		ModScreenHandlers.init();
@@ -63,6 +65,7 @@ public class FabaoMod implements ModInitializer {
 		ServerTickEvents.END_SERVER_TICK.register(CultivationManager::onEndTick);
 		ServerTickEvents.END_SERVER_TICK.register(QilingManager::onEndTick);
 		ServerTickEvents.END_SERVER_TICK.register(HeldWeaponPassive::onEndTick);
+		ServerTickEvents.END_SERVER_TICK.register(com.fabao.equipment.ChargeLogic::tickParticles);
 		LOGGER.info("[Fabao] initialized");
 	}
 }

@@ -56,6 +56,26 @@ public final class YaoManager {
 			return;
 		}
 		YaoType type = pool.get(player.getRandom().nextInt(pool.size()));
+		spawn(player, type);
+	}
+
+	/** 潜行右键：按 tier 顺序循环召唤（狐妖 → 蜘蛛精 → 黑熊精 → 循环），便于逐个查看模型。 */
+	private static final java.util.Map<UUID, Integer> CYCLE = new java.util.HashMap<>();
+
+	public static void summonCycle(ServerPlayerEntity player, int tier) {
+		java.util.List<YaoType> pool = YaoType.byTier(tier);
+		if (pool.isEmpty()) {
+			com.fabao.util.Feedback.fail(player, "fabao.yao.fail");
+			return;
+		}
+		int idx = CYCLE.getOrDefault(player.getUuid(), 0) % pool.size();
+		YaoType type = pool.get(idx);
+		CYCLE.put(player.getUuid(), idx + 1);
+		spawn(player, type);
+	}
+
+	/** 实际生成一只指定妖。 */
+	public static void spawn(ServerPlayerEntity player, YaoType type) {
 		ServerWorld world = player.getEntityWorld();
 		Entity entity = type.template().create(world, SpawnReason.MOB_SUMMONED);
 		if (entity == null) {
