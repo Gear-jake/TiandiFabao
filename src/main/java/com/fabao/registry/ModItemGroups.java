@@ -32,6 +32,8 @@ public final class ModItemGroups {
 					entries.add(ModItems.YAOWANG_DAN);
 					entries.add(ModBlocks.LIANQI_LU);
 					entries.add(ModItems.GUIDE_BOOK);
+					entries.add(ModDemonSpawns.JINJIAO_SPAWN_EGG);
+					entries.add(ModDemonSpawns.YINJIAO_SPAWN_EGG);
 				})
 				.build());
 	}

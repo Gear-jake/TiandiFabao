@@ -3,7 +3,9 @@ package com.fabao.registry;
 import com.fabao.FabaoMod;
 import com.fabao.entity.BearDemonEntity;
 import com.fabao.entity.FoxDemonEntity;
+import com.fabao.entity.JinjiaoDawangEntity;
 import com.fabao.entity.SpiderDemonEntity;
+import com.fabao.entity.YinjiaoDawangEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -22,6 +24,10 @@ public final class ModEntities {
 			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("spider_demon"));
 	public static final RegistryKey<EntityType<?>> BEAR_DEMON_KEY =
 			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("bear_demon"));
+	public static final RegistryKey<EntityType<?>> JINJIAO_DAWANG_KEY =
+			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("jinjiao_dawang"));
+	public static final RegistryKey<EntityType<?>> YINJIAO_DAWANG_KEY =
+			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("yinjiao_dawang"));
 
 	public static final EntityType<FoxDemonEntity> FOX_DEMON = Registry.register(
 			Registries.ENTITY_TYPE, FOX_DEMON_KEY,
@@ -38,6 +44,16 @@ public final class ModEntities {
 			EntityType.Builder.create(BearDemonEntity::new, SpawnGroup.CREATURE)
 					.dimensions(1.1f, 1.9f).maxTrackingRange(10).build(BEAR_DEMON_KEY));
 
+	public static final EntityType<JinjiaoDawangEntity> JINJIAO_DAWANG = Registry.register(
+			Registries.ENTITY_TYPE, JINJIAO_DAWANG_KEY,
+			EntityType.Builder.create(JinjiaoDawangEntity::new, SpawnGroup.MONSTER)
+					.dimensions(1.1f, 2.2f).maxTrackingRange(12).build(JINJIAO_DAWANG_KEY));
+
+	public static final EntityType<YinjiaoDawangEntity> YINJIAO_DAWANG = Registry.register(
+			Registries.ENTITY_TYPE, YINJIAO_DAWANG_KEY,
+			EntityType.Builder.create(YinjiaoDawangEntity::new, SpawnGroup.MONSTER)
+					.dimensions(1.1f, 2.2f).maxTrackingRange(12).build(YINJIAO_DAWANG_KEY));
+
 	private ModEntities() {
 	}
 
@@ -45,5 +61,7 @@ public final class ModEntities {
 		FabricDefaultAttributeRegistry.register(FOX_DEMON, FoxDemonEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(SPIDER_DEMON, SpiderDemonEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(BEAR_DEMON, BearDemonEntity.createAttributes());
+		FabricDefaultAttributeRegistry.register(JINJIAO_DAWANG, JinjiaoDawangEntity.createAttributes());
+		FabricDefaultAttributeRegistry.register(YINJIAO_DAWANG, YinjiaoDawangEntity.createAttributes());
 	}
 }

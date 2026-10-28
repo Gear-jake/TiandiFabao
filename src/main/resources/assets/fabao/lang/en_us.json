@@ -84,5 +84,14 @@
   "item.fabao.zhanyao_dao": "Demon-Slaying Blade",
   "item.fabao.jiangyao_chu": "Demon-Quelling Mace",
   "item.fabao.dinghai_shenzhen": "Sea-Calming Needle",
-  "item.fabao.fabao_book": "Compendium of Fengshen & Xiyou Treasures"
+  "item.fabao.fabao_book": "Compendium of Fengshen & Xiyou Treasures",
+  "entity.fabao.bear_demon": "Bear Demon",
+  "entity.fabao.spider_demon": "Spider Demon",
+  "entity.fabao.fox_demon": "Fox Demon",
+  "entity.fabao.jinjiao_dawang": "Jinjiao Dawang",
+  "fabao.dan.gain": "Refined demon core: +%s spirit",
+  "fabao.dan.full": "Spirit is already full",
+  "entity.fabao.yinjiao_dawang": "Yinjiao Dawang",
+  "item.fabao.jinjiao_dawang_spawn_egg": "Jinjiao Dawang Spawn Egg",
+  "item.fabao.yinjiao_dawang_spawn_egg": "Yinjiao Dawang Spawn Egg"
 }

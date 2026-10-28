@@ -30,6 +30,17 @@ public final class CultivationManager {
 	}
 
 	/** 灵力扣减：不足则提示（当前/所需）并返回 false，调用方不得执行技能。 */
+	/** 补充灵力（妖丹修炼用），返回实际增加量。 */
+	public static int addSpirit(ServerPlayerEntity player, int amount) {
+		CultivationData data = get(player);
+		int newSpirit = Math.min(MAX_SPIRIT, data.spirit() + amount);
+		int gained = newSpirit - data.spirit();
+		if (gained > 0) {
+			set(player, data.withSpirit(newSpirit));
+		}
+		return gained;
+	}
+
 	public static boolean tryConsume(ServerPlayerEntity player, int cost) {
 		CultivationData data = get(player);
 		if (data.spirit() < cost) {

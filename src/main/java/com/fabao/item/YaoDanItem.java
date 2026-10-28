@@ -1,6 +1,7 @@
 package com.fabao.item;
 
-import com.fabao.yao.YaoManager;
+import com.fabao.cultivation.CultivationManager;
+import com.fabao.util.Feedback;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -9,7 +10,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
 /**
- * 妖丹：右键在身前召唤对应等级的妖（1 小妖 / 2 大妖 / 3 妖王）。
+ * 妖丹：修炼资源。右键炼化，按品阶补充灵力
+ * （小妖丹 +20 / 大妖丹 +40 / 妖王丹 +60）。
  * 妖丹同时是炼器/合成法宝的材料（见工作台配方）。
  */
 public class YaoDanItem extends Item {
@@ -26,15 +28,21 @@ public class YaoDanItem extends Item {
 
 	@Override
 	public ActionResult use(World world, PlayerEntity user, Hand hand) {
-		if (!world.isClient() && user instanceof ServerPlayerEntity player) {
-			// 潜行右键 = 按顺序循环召（狐妖→蜘蛛精→黑熊精），普通右键 = 随机
-			if (player.isSneaking()) {
-				YaoManager.summonCycle(player, tier);
-			} else {
-				YaoManager.summon(player, tier);
-			}
-			user.getStackInHand(hand).decrement(1);
+		if (world.isClient() || !(user instanceof ServerPlayerEntity player)) {
+			return ActionResult.SUCCESS;
 		}
+		int want = switch (tier) {
+			case 1 -> 20;
+			case 2 -> 40;
+			default -> 60;
+		};
+		int gained = CultivationManager.addSpirit(player, want);
+		if (gained <= 0) {
+			Feedback.fail(player, "fabao.dan.full");
+			return ActionResult.FAIL;
+		}
+		Feedback.success(player, "fabao.dan.gain", gained);
+		user.getStackInHand(hand).decrement(1);
 		return ActionResult.SUCCESS;
 	}
 }

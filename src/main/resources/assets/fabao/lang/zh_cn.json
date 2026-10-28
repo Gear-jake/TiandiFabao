@@ -84,5 +84,14 @@
   "item.fabao.zhanyao_dao": "斩妖刀",
   "item.fabao.jiangyao_chu": "降妖杵",
   "item.fabao.dinghai_shenzhen": "定海神针",
-  "item.fabao.fabao_book": "封神西游·法宝谱"
+  "item.fabao.fabao_book": "封神西游·法宝谱",
+  "entity.fabao.bear_demon": "黑熊精",
+  "entity.fabao.spider_demon": "蜘蛛精",
+  "entity.fabao.fox_demon": "狐妖",
+  "entity.fabao.jinjiao_dawang": "金角大王",
+  "fabao.dan.gain": "妖丹炼化，灵力 +%s",
+  "fabao.dan.full": "灵力已满，无需炼化",
+  "entity.fabao.yinjiao_dawang": "银角大王",
+  "item.fabao.jinjiao_dawang_spawn_egg": "金角大王刷怪蛋",
+  "item.fabao.yinjiao_dawang_spawn_egg": "银角大王刷怪蛋"
 }

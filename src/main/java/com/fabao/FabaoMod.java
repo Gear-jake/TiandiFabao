@@ -40,6 +40,7 @@ public class FabaoMod implements ModInitializer {
 		ModPackets.init();
 		ModItems.register();
 		ModEntities.init();
+		com.fabao.registry.ModDemonSpawns.init();
 		ModBlocks.register();
 		ModBlockEntities.init();
 		ModScreenHandlers.init();

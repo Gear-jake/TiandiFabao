@@ -39,25 +39,19 @@ public final class ParticleFx {
 
 	/** 环形范围指示：4 层同心环 + 中心爆发（5 个包，约 70 粒子）。 */
 	public static void ring(ServerWorld world, Vec3d center, double radius, int count, int color) {
-		world.spawnParticles(dust(color, 1.6f), center.x, center.y + 0.15, center.z,
-				Math.max(14, count), radius, 0.02, radius, 0.0);
-		world.spawnParticles(dust(color, 1.4f), center.x, center.y + 0.35, center.z,
-				Math.max(20, count * 2), radius * 0.78, 0.03, radius * 0.78, 0.0);
-		world.spawnParticles(dust(WHITE, 1.0f), center.x, center.y + 0.55, center.z,
-				Math.max(10, count), radius * 0.5, 0.02, radius * 0.5, 0.0);
-		world.spawnParticles(dust(color, 1.8f), center.x, center.y + 0.7, center.z,
-				Math.max(6, count / 2), 0.12, 0.25, 0.12, 0.03);
-		world.spawnParticles(ParticleTypes.END_ROD, center.x, center.y + 0.4, center.z,
-				Math.max(6, count / 2), radius * 0.35, 0.1, radius * 0.35, 0.02);
+		world.spawnParticles(dust(color, 1.5f), center.x, center.y + 0.15, center.z,
+				Math.max(10, count), radius, 0.02, radius, 0.0);
+		world.spawnParticles(dust(color, 1.3f), center.x, center.y + 0.4, center.z,
+				Math.max(8, count / 2), radius * 0.7, 0.03, radius * 0.7, 0.0);
 	}
 
 	/** 前方扇形：5 段推进 + 尖端爆点（6 个包，约 80 粒子）。 */
 	public static void cone(ServerWorld world, ServerPlayerEntity player, double radius, int count, int color) {
 		Vec3d look = player.getRotationVec(1.0f);
 		Vec3d origin = player.getEntityPos().add(0, 0.9, 0);
-		int perRing = Math.max(8, count);
-		for (int ring = 1; ring <= 5; ring++) {
-			double t = ring / 5.0;
+		int perRing = Math.max(5, count / 2);
+		for (int ring = 1; ring <= 3; ring++) {
+			double t = ring / 3.0;
 			Vec3d at = origin.add(look.multiply(radius * t));
 			float scale = 1.6f - 0.5f * (float) t;
 			world.spawnParticles(dust(color, scale), at.x, at.y, at.z,
@@ -84,21 +78,18 @@ public final class ParticleFx {
 	/** 命中爆点：厚实的受击反馈（4 个包，约 60 粒子）。 */
 	public static void burst(ServerWorld world, LivingEntity target, int color) {
 		Vec3d pos = target.getEntityPos().add(0, target.getHeight() * 0.5, 0);
-		world.spawnParticles(dust(color, 2.0f), pos.x, pos.y, pos.z, 24, 0.3, 0.35, 0.3, 0.06);
-		world.spawnParticles(dust(WHITE, 1.1f), pos.x, pos.y + 0.1, pos.z, 14, 0.22, 0.25, 0.22, 0.04);
-		world.spawnParticles(ParticleTypes.CRIT, pos.x, pos.y, pos.z, 16, 0.25, 0.3, 0.25, 0.14);
-		world.spawnParticles(ParticleTypes.END_ROD, pos.x, pos.y + 0.15, pos.z, 8, 0.18, 0.2, 0.18, 0.03);
+		world.spawnParticles(dust(color, 1.9f), pos.x, pos.y, pos.z, 14, 0.28, 0.3, 0.28, 0.05);
+		world.spawnParticles(ParticleTypes.CRIT, pos.x, pos.y, pos.z, 8, 0.22, 0.25, 0.22, 0.12);
 	}
 
 	/** 天降光柱：5 段 + 底部冲击环（6 个包，约 70 粒子）。 */
 	public static void column(ServerWorld world, Vec3d base, double height, int color) {
-		for (int i = 0; i < 5; i++) {
-			double t = i / 5.0;
+		for (int i = 0; i < 3; i++) {
+			double t = i / 3.0;
 			double y = base.y + height * t;
-			world.spawnParticles(dust(color, 1.7f), base.x, y, base.z, 10, 0.32, 0.12, 0.32, 0.02);
-			world.spawnParticles(dust(WHITE, 0.9f), base.x, y + 0.1, base.z, 5, 0.16, 0.1, 0.16, 0.01);
+			world.spawnParticles(dust(color, 1.7f), base.x, y, base.z, 6, 0.3, 0.12, 0.3, 0.02);
 		}
-		world.spawnParticles(dust(color, 1.3f), base.x, base.y + 0.1, base.z, 22, 0.9, 0.02, 0.9, 0.0);
+		world.spawnParticles(dust(color, 1.3f), base.x, base.y + 0.1, base.z, 14, 0.85, 0.02, 0.85, 0.0);
 	}
 
 	/** 拖尾（器灵飞行，1 个包）。 */

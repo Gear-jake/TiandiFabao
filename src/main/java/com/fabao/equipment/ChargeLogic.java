@@ -54,7 +54,7 @@ public final class ChargeLogic {
 			return;
 		}
 		int ticks = server.getTicks();
-		if (ticks % 3 != 0) {
+		if (ticks % 5 != 0) {
 			return;
 		}
 		// 清理已下线/已释放的玩家
