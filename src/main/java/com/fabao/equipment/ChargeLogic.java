@@ -77,4 +77,9 @@ public final class ChargeLogic {
 	public static boolean isCharging(ServerPlayerEntity player) {
 		return CHARGING.contains(player.getUuid());
 	}
+
+	public static void clearPlayer(java.util.UUID id) {
+		PRESS_TICK.remove(id);
+		CHARGING.remove(id);
+	}
 }

@@ -63,6 +63,14 @@ public class FabaoMod implements ModInitializer {
 					}
 				});
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> GuideBook.giveTo(handler.getPlayer()));
+		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
+			java.util.UUID id = handler.getPlayer().getUuid();
+			com.fabao.equipment.FabaoActivator.clearPlayer(id);
+			com.fabao.equipment.ChargeLogic.clearPlayer(id);
+			com.fabao.equipment.HeldWeaponPassive.clearPlayer(id);
+			com.fabao.combat.ComboTracker.clearPlayer(id);
+			com.fabao.combat.QilingManager.clearPlayer(id);
+		});
 		ServerTickEvents.END_SERVER_TICK.register(CultivationManager::onEndTick);
 		ServerTickEvents.END_SERVER_TICK.register(QilingManager::onEndTick);
 		ServerTickEvents.END_SERVER_TICK.register(HeldWeaponPassive::onEndTick);

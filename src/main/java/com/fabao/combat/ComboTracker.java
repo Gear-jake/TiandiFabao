@@ -72,4 +72,8 @@ public final class ComboTracker {
 				SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER, SoundCategory.PLAYERS, 1.0f, 1.2f);
 		player.sendMessage(Text.translatable("fabao.combo.trigger"), false);
 	}
+
+	public static void clearPlayer(java.util.UUID id) {
+		HISTORY.remove(id);
+	}
 }

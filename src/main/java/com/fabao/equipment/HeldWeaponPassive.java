@@ -93,4 +93,8 @@ public final class HeldWeaponPassive {
 			case KNOCKBACK_RESIST -> EntityAttributes.KNOCKBACK_RESISTANCE;
 		};
 	}
+
+	public static void clearPlayer(java.util.UUID id) {
+		APPLIED.remove(id);
+	}
 }

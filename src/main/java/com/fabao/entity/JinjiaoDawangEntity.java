@@ -64,6 +64,7 @@ public class JinjiaoDawangEntity extends PathAwareEntity {
 		this.goalSelector.add(4, new LookAroundGoal(this));
 		this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.add(2, new RevengeGoal(this));
+		this.targetSelector.add(3, new net.minecraft.entity.ai.goal.ActiveTargetGoal<>(this, net.minecraft.entity.passive.IronGolemEntity.class, true));
 	}
 
 	@Override
@@ -95,46 +96,47 @@ public class JinjiaoDawangEntity extends PathAwareEntity {
 		}
 	}
 
-	/** 特殊攻击：找 8 格内最近的玩家吸进来。 */
+	/** 特殊攻击：把 8 格内最近的生物（玩家/怪物/BOSS 都行）吸进葫芦。 */
 	private void trySpecial() {
 		if (!(this.getEntityWorld() instanceof ServerWorld world)) {
 			return;
 		}
-		PlayerEntity target = world.getClosestPlayer(this, 8.0);
-		if (target == null || !target.isAlive() || target.isCreative() || target.isSpectator()) {
+		net.minecraft.entity.LivingEntity target = world.getEntitiesByClass(
+						net.minecraft.entity.LivingEntity.class, this.getBoundingBox().expand(8.0),
+						e -> e != this && e.isAlive() && !e.isSpectator()
+								&& !(e instanceof PlayerEntity p && (p.isCreative() || p.isSpectator())))
+				.stream().min(java.util.Comparator.comparingDouble(this::squaredDistanceTo)).orElse(null);
+		if (target == null) {
 			return;
 		}
-		if (!(target instanceof ServerPlayerEntity player)) {
-			return;
-		}
-		captured = player.getUuid();
+		captured = target.getUuid();
 		captureTicks = CAPTURE_TICKS;
 		cooldown = SPECIAL_COOLDOWN + CAPTURE_TICKS;
-		releaseX = player.getX();
-		releaseY = player.getY();
-		releaseZ = player.getZ();
-		player.startRiding(this, true, true);
-		player.setInvisible(true);
+		releaseX = target.getX();
+		releaseY = target.getY();
+		releaseZ = target.getZ();
+		target.startRiding(this, true, true);
+		target.setInvisible(true);
 		this.setPose(net.minecraft.entity.EntityPose.LONG_JUMPING);
-		player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, CAPTURE_TICKS + 10, 6, false, false));
+		target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, CAPTURE_TICKS + 10, 6, false, false));
 	}
 
 	private void tickCapture() {
 		if (!(this.getEntityWorld() instanceof ServerWorld world)) {
 			return;
 		}
-		ServerPlayerEntity player = world.getServer().getPlayerManager().getPlayer(captured);
-		if (player == null || !player.isAlive()) {
+		net.minecraft.entity.Entity cap = world.getEntity(captured);
+		if (cap == null || !cap.isAlive()) {
 			release(true);
 			return;
 		}
 		// 锁在葫芦里：掉下坐骑就立刻骑回去
-		if (player.getVehicle() != this) {
-			player.startRiding(this, true, true);
+		if (cap.getVehicle() != this) {
+			cap.startRiding(this, true, true);
 		}
-		if (captureTicks % 20 == 0) {
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 50, 0, false, true));
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 50, 0, false, true));
+		if (captureTicks % 20 == 0 && cap instanceof net.minecraft.entity.LivingEntity living) {
+			living.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 50, 0, false, true));
+			living.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 50, 0, false, true));
 		}
 		captureTicks--;
 		if (captureTicks <= 0) {
@@ -142,19 +144,21 @@ public class JinjiaoDawangEntity extends PathAwareEntity {
 		}
 	}
 
-	/** 放出被收的玩家，回到被抓的位置。 */
+	/** 放出被收的生物，回到被抓的位置。 */
 	private void release(boolean teleportBack) {
 		if (captured != null && this.getEntityWorld() instanceof ServerWorld world) {
-			ServerPlayerEntity player = world.getServer().getPlayerManager().getPlayer(captured);
-			if (player != null) {
-				player.stopRiding();
-				player.setInvisible(false);
+			net.minecraft.entity.Entity cap = world.getEntity(captured);
+			if (cap != null) {
+				cap.stopRiding();
+				cap.setInvisible(false);
 				this.setPose(net.minecraft.entity.EntityPose.STANDING);
-				player.removeStatusEffect(StatusEffects.SLOWNESS);
+				if (cap instanceof net.minecraft.entity.LivingEntity living) {
+					living.removeStatusEffect(StatusEffects.SLOWNESS);
+				}
 				if (teleportBack) {
-					player.requestTeleport(releaseX, releaseY, releaseZ);
+					cap.refreshPositionAndAngles(releaseX, releaseY, releaseZ, cap.getYaw(), cap.getPitch());
 				} else {
-					player.requestTeleport(this.getX() + 1.5, this.getY(), this.getZ());
+					cap.refreshPositionAndAngles(this.getX() + 1.5, this.getY(), this.getZ(), cap.getYaw(), cap.getPitch());
 				}
 			}
 		}

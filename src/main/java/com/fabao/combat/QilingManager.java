@@ -98,4 +98,8 @@ public final class QilingManager {
 			}
 		}
 	}
+
+	public static void clearPlayer(java.util.UUID id) {
+		ACTIVE.remove(id);
+	}
 }

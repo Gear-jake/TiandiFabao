@@ -34,6 +34,7 @@ public final class ModItemGroups {
 					entries.add(ModItems.GUIDE_BOOK);
 					entries.add(ModDemonSpawns.JINJIAO_SPAWN_EGG);
 					entries.add(ModDemonSpawns.YINJIAO_SPAWN_EGG);
+					entries.add(ModDemonSpawns.BAIGUJING_SPAWN_EGG);
 				})
 				.build());
 	}

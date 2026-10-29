@@ -19,6 +19,7 @@ import net.minecraft.registry.Registry;
 public final class ModDemonSpawns {
 	public static final Item JINJIAO_SPAWN_EGG = egg(ModEntities.JINJIAO_DAWANG, "jinjiao_dawang_spawn_egg");
 	public static final Item YINJIAO_SPAWN_EGG = egg(ModEntities.YINJIAO_DAWANG, "yinjiao_dawang_spawn_egg");
+	public static final Item BAIGUJING_SPAWN_EGG = egg(ModEntities.BAIGUJING, "baigujing_spawn_egg");
 
 	private ModDemonSpawns() {
 	}
@@ -35,10 +36,13 @@ public final class ModDemonSpawns {
 	public static void init() {
 		Registry.register(Registries.ITEM, FabaoMod.id("jinjiao_dawang_spawn_egg"), JINJIAO_SPAWN_EGG);
 		Registry.register(Registries.ITEM, FabaoMod.id("yinjiao_dawang_spawn_egg"), YINJIAO_SPAWN_EGG);
+		Registry.register(Registries.ITEM, FabaoMod.id("baigujing_spawn_egg"), BAIGUJING_SPAWN_EGG);
 
 		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER,
 				ModEntities.JINJIAO_DAWANG, 2, 1, 1);
 		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER,
 				ModEntities.YINJIAO_DAWANG, 2, 1, 1);
+		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER,
+				ModEntities.BAIGUJING, 2, 1, 1);
 	}
 }

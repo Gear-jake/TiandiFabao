@@ -1,6 +1,7 @@
 package com.fabao.registry;
 
 import com.fabao.FabaoMod;
+import com.fabao.entity.BaigujingEntity;
 import com.fabao.entity.BearDemonEntity;
 import com.fabao.entity.FoxDemonEntity;
 import com.fabao.entity.JinjiaoDawangEntity;
@@ -28,6 +29,8 @@ public final class ModEntities {
 			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("jinjiao_dawang"));
 	public static final RegistryKey<EntityType<?>> YINJIAO_DAWANG_KEY =
 			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("yinjiao_dawang"));
+	public static final RegistryKey<EntityType<?>> BAIGUJING_KEY =
+			RegistryKey.of(RegistryKeys.ENTITY_TYPE, FabaoMod.id("baigujing"));
 
 	public static final EntityType<FoxDemonEntity> FOX_DEMON = Registry.register(
 			Registries.ENTITY_TYPE, FOX_DEMON_KEY,
@@ -54,6 +57,11 @@ public final class ModEntities {
 			EntityType.Builder.create(YinjiaoDawangEntity::new, SpawnGroup.MONSTER)
 					.dimensions(1.1f, 2.2f).maxTrackingRange(12).build(YINJIAO_DAWANG_KEY));
 
+	public static final EntityType<BaigujingEntity> BAIGUJING = Registry.register(
+			Registries.ENTITY_TYPE, BAIGUJING_KEY,
+			EntityType.Builder.create(BaigujingEntity::new, SpawnGroup.MONSTER)
+					.dimensions(0.8f, 2.1f).maxTrackingRange(12).build(BAIGUJING_KEY));
+
 	private ModEntities() {
 	}
 
@@ -63,5 +71,6 @@ public final class ModEntities {
 		FabricDefaultAttributeRegistry.register(BEAR_DEMON, BearDemonEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(JINJIAO_DAWANG, JinjiaoDawangEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(YINJIAO_DAWANG, YinjiaoDawangEntity.createAttributes());
+		FabricDefaultAttributeRegistry.register(BAIGUJING, BaigujingEntity.createAttributes());
 	}
 }

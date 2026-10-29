@@ -26,11 +26,13 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 import com.fabao.client.model.BearDemonModel;
+import com.fabao.client.model.BaigujingModel;
 import com.fabao.client.model.JinjiaoDawangModel;
 import com.fabao.client.model.YinjiaoDawangModel;
 import com.fabao.client.model.FoxDemonModel;
 import com.fabao.client.model.SpiderDemonModel;
 import com.fabao.client.renderer.BearDemonRenderer;
+import com.fabao.client.renderer.BaigujingRenderer;
 import com.fabao.client.renderer.JinjiaoDawangRenderer;
 import com.fabao.client.renderer.YinjiaoDawangRenderer;
 import com.fabao.client.renderer.FoxDemonRenderer;
@@ -144,12 +146,14 @@ public class FabaoClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(SpiderDemonModel.LAYER, SpiderDemonModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(BearDemonModel.LAYER, BearDemonModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(JinjiaoDawangModel.LAYER, JinjiaoDawangModel::getTexturedModelData);
+		EntityModelLayerRegistry.registerModelLayer(BaigujingModel.LAYER, BaigujingModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(YinjiaoDawangModel.LAYER, YinjiaoDawangModel::getTexturedModelData);
 
 		EntityRendererRegistry.register(ModEntities.FOX_DEMON, FoxDemonRenderer::new);
 		EntityRendererRegistry.register(ModEntities.SPIDER_DEMON, SpiderDemonRenderer::new);
 		EntityRendererRegistry.register(ModEntities.BEAR_DEMON, BearDemonRenderer::new);
 		EntityRendererRegistry.register(ModEntities.JINJIAO_DAWANG, JinjiaoDawangRenderer::new);
+		EntityRendererRegistry.register(ModEntities.BAIGUJING, BaigujingRenderer::new);
 		EntityRendererRegistry.register(ModEntities.YINJIAO_DAWANG, YinjiaoDawangRenderer::new);
 	}
 }

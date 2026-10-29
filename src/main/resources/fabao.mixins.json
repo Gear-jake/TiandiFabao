@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.fabao.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MobEntityAccessor",
+    "VillagerEntityMixin",
+    "LivingEntityMixin",
+    "IronGolemEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

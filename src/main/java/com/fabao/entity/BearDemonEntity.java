@@ -40,5 +40,6 @@ public class BearDemonEntity extends PathAwareEntity {
 		this.goalSelector.add(8, new LookAroundGoal(this));
 		this.targetSelector.add(1, new RevengeGoal(this));
 		this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+		this.targetSelector.add(3, new net.minecraft.entity.ai.goal.ActiveTargetGoal<>(this, net.minecraft.entity.passive.IronGolemEntity.class, true));
 	}
 }

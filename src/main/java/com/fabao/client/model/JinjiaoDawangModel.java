@@ -81,7 +81,7 @@ public class JinjiaoDawangModel extends EntityModel<LivingEntityRenderState> {
 		ModelPartData groupData = armbonerightData.addChild("group", ModelPartBuilder.create()
 				.uv(0, 45).cuboid(-1.5f, 0f, -1.5f, 3f, 6f, 3f)
 				.uv(28, 54).cuboid(-1f, -2f, -1f, 2f, 2f, 2f)
-				, ModelTransform.of(6.5f, 12f, 1f, 0f, 0f, 0f));
+				, ModelTransform.of(0.5f, 12f, 1f, 0f, 0f, 0f));
 
 		ModelPartData legboneleftData = rootData.addChild("legboneleft", ModelPartBuilder.create()
 				.uv(32, 16).cuboid(-2f, 0f, -2f, 4f, 12f, 4f)

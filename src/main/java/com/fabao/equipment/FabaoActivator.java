@@ -349,4 +349,9 @@ public final class FabaoActivator {
 		SLOT_COOLDOWNS.computeIfAbsent(player.getUuid(), k -> new int[FabaoSlots.SLOT_COUNT])[slot] =
 				nowTick + COOLDOWN_TICKS;
 	}
+
+	public static void clearPlayer(java.util.UUID id) {
+		SLOT_COOLDOWNS.remove(id);
+		HELD_COOLDOWNS.remove(id);
+	}
 }

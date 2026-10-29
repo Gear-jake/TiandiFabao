@@ -93,5 +93,7 @@
   "fabao.dan.full": "灵力已满，无需炼化",
   "entity.fabao.yinjiao_dawang": "银角大王",
   "item.fabao.jinjiao_dawang_spawn_egg": "金角大王刷怪蛋",
-  "item.fabao.yinjiao_dawang_spawn_egg": "银角大王刷怪蛋"
+  "item.fabao.yinjiao_dawang_spawn_egg": "银角大王刷怪蛋",
+  "entity.fabao.baigujing": "白骨精",
+  "item.fabao.baigujing_spawn_egg": "白骨精刷怪蛋"
 }
